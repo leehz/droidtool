@@ -11,6 +11,13 @@ apply plugin: 'PLUGIN'
 android {
     compileSdkVersion 'TARGET'
     buildToolsVersion 'BUILD_TOOL_REV'
+    
+    defaultConfig {
+            minSdkVersion 9
+            targetSdkVersion 23
+            versionCode 1
+            versionName "1.0"
+    }
 
     buildTypes {
         release {
