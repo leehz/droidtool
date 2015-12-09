@@ -1,0 +1,32 @@
+#!/usr/bin/env  bash
+#set -x
+###  a esay-to-use shell script to create a project with android tools
+Usage()
+{
+    echo -e "Usage: `basename $0` [-n name] [-a activity] \n";
+    exit 1;
+}
+
+if [ $# -ne 4 ]
+then 
+    Usage
+fi
+if  [ "$1" != "-n" ] || [ "$3" != "-a" ]
+then 
+    Usage
+fi
+#if  [ "$3" != "-a" ]
+#then 
+#    Usage
+#fi
+
+NAME=$2
+ACT=$4
+PACKAGE=top.itmp.$(echo $NAME|tr '[A-Z]' '[a-z]')
+android -v create project  -n  $NAME -a $ACT -k top.itmp.$(echo $NAME|tr '[A-Z]' '[a-z]') -t 1 -v 1.5.0 -g -p  $NAME
+echo -e "\e[34m----------------------------------------\e[0m"
+echo -e "\e[31m Android Project $NAME has been created :\e[0m"
+echo -e "\e[32m App Name: \e[36m$NAME \e[0m"
+echo -e "\e[35m Package Name: \e[36m top.itmp.$(echo $NAME|tr '[A-Z]' '[a-z]') \e[0m"
+echo -e "\e[33m Launcher Activity: \e[36m $ACT \e[0m"
+echo -e "\e[34m----------------------------------------\e[0m"
